@@ -1,4 +1,6 @@
 const router = require ("express").Router;
+const {pathMiddleware} = require("../middleware/pathMiddleware");
+
 const {
     createUser,
     deleteUser,
@@ -16,7 +18,9 @@ userRouter.delete("/", deleteUser);
 userRouter.get("/", getUser);
  */
 
-userRouter.route("/").get(getUsers).post(createUser);
+//getting all users
+userRouter.route("/").get(pathMiddleware, getUsers).post(createUser);
+//getting a specific user with unique user id
 userRouter.route("/:userId").get(getUser).patch(updateUser).delete(deleteUser);
 
 

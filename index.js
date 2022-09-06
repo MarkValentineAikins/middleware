@@ -2,6 +2,9 @@
 const express = require ("express");
 const app = express();
 const userRouter = require("./routes/users.route");
+const {globalMiddleware} = require("./middleware/globalMiddleware");
+
+app.use(globalMiddleware);
 
 /* app.get("/", (req, res) => {
     res.status(200).send("Welcome to my server");
